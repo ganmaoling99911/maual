@@ -53,37 +53,39 @@
             height: 100%; 
             z-index: -3; 
             overflow: hidden; 
-            /* Subtle radial gradient overlay for deeper background */
             background: radial-gradient(circle at center, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
         }
         .background-container.is-loading .sanctum-orb,
         .background-container.is-loading .image-orb {
             animation-play-state: paused;
         }
-        /* Slightly reduce blur for a clearer, yet still ethereal effect */
-        .background-base-sky { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; overflow: hidden; filter: blur(100px); opacity: 0.7; }
-        .background-sanctum { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; filter: blur(100px) saturate(1.1); opacity: 0.6; }
+        
+        /* MODIFIED: Increased blur and opacity for a larger, more prominent halo effect */
+        .background-base-sky { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -3; overflow: hidden; filter: blur(150px); opacity: 0.8; }
+        .background-sanctum { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; filter: blur(150px) saturate(1.2); opacity: 0.7; }
         .background-image-orb-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; }
         
         .sanctum-orb { position: absolute; border-radius: 50%; animation-iteration-count: infinite; animation-timing-function: ease-in-out; }
-        .sky-orb { animation-duration: 35s; /* Slower */ animation-name: float, color-cycle-sky; }
-        .earth-orb { animation-duration: 30s; /* Slower */ animation-name: float-2, color-cycle-earth; animation-delay: 0s, 7s; }
-        .base-orb-1 { width: 80vw; height: 80vw; top: -30%; left: -30%; }
-        .base-orb-2 { width: 70vw; height: 70vw; bottom: -40%; right: -30%; }
-        .base-orb-3 { width: 60vw; height: 60vw; bottom: -10%; left: 5%; animation-name: float-3, color-cycle-sky; animation-delay: 0s, 14s; }
+        .sky-orb { animation-duration: 35s; animation-name: float, color-cycle-sky; }
+        .earth-orb { animation-duration: 30s; animation-name: float-2, color-cycle-earth; animation-delay: 0s, 7s; }
+
+        /* MODIFIED: Increased the size of the orbs to create larger light sources */
+        .base-orb-1 { width: 100vw; height: 100vw; top: -40%; left: -40%; }
+        .base-orb-2 { width: 90vw; height: 90vw; bottom: -50%; right: -40%; }
+        .base-orb-3 { width: 80vw; height: 80vw; bottom: -20%; left: -10%; animation-name: float-3, color-cycle-sky; animation-delay: 0s, 14s; }
 
         .image-orb {
             position: absolute;
             background-size: cover;
             background-position: center;
             will-change: transform;
-            animation-duration: 30s; /* Slower */
+            animation-duration: 30s;
             animation-iteration-count: infinite;
-            animation-timing-function: ease-in-out; /* Smoother motion */
+            animation-timing-function: ease-in-out;
             mix-blend-mode: screen; 
             -webkit-mask-image: radial-gradient(circle, white 30%, transparent 65%);
             mask-image: radial-gradient(circle, white 30%, transparent 65%);
-            opacity: 0.8; /* Slightly reduce opacity for softness */
+            opacity: 0.8;
         }
         
         .image-orb .orb-bg {
@@ -119,52 +121,47 @@
         .task-checkbox:checked ~ .task-container .task-circle { 
             background-image: radial-gradient(circle, rgba(255, 235, 150, 0.9) 0%, rgba(255, 215, 0, 0.4) 50%, transparent 70%);
             border-color: rgba(255, 215, 0, 0.5);
-            animation: holy-glow 3s infinite ease-in-out; /* Slower and more natural */
+            animation: holy-glow 3s infinite ease-in-out;
         }
         
         .module-button { transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); color: #f0f0f0; }
         .module-button:hover { transform: translateY(-2px); background: rgba(255, 255, 255, 0.15); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); }
         .gradient-text { background: linear-gradient(45deg, #a2d2ff, #f0f0f0, #ffafcc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     
-        /* Save and Export buttons - Neutral styling */
         #save-journal-entry, #export-journal-entry {
-            background: rgba(255, 255, 255, 0.08); /* Light greyish transparent */
-            border: 1px solid rgba(255, 255, 255, 0.15); /* Subtle border */
-            color: #cccccc; /* Muted text color */
-            transition: all 0.3s ease; /* Keep transition for smoothness */
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #cccccc;
+            transition: all 0.3s ease;
         }
         #save-journal-entry:hover, #export-journal-entry:hover {
-            background: rgba(255, 255, 255, 0.15); /* Slightly brighter on hover */
-            border-color: rgba(255, 255, 255, 0.25); /* Slightly brighter border */
-            color: #ffffff; /* Text brightens on hover */
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05); /* Subtle white glow */
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
         }
 
-        /* Dynamic Music Button Styling */
         .music-switch {
-            /* Basic interactive properties */
             cursor: pointer;
             transition: all 0.4s ease-in-out;
-            display: inline-block; /* Required for transforms */
+            display: inline-block;
         }
         .music-switch:hover {
-            transform: scale(1.1); /* Slight zoom on hover */
+            transform: scale(1.1);
         }
         .music-switch.playing {
-            /* Overrides the .gradient-text style to create the crystal effect */
             background: none;
             -webkit-background-clip: initial;
             -webkit-text-fill-color: initial;
             color: rgba(255, 255, 255, 0.9);
             text-shadow:
                 0 2px 5px rgba(0, 0, 0, 0.4),
-                0 0 10px rgba(173, 216, 230, 0.8), /* Light blue glow */
+                0 0 10px rgba(173, 216, 230, 0.8),
                 0 0 25px rgba(173, 216, 230, 0.7),
                 0 0 40px rgba(173, 216, 230, 0.6),
                 1px -1px 1px rgba(255, 255, 255, 1);
         }
 
-        /* Style for the new difficulty adjustment buttons */
         .difficulty-button {
             width: 24px;
             height: 24px;
@@ -172,41 +169,38 @@
             background-color: var(--difficulty-button-bg-color, rgba(255, 255, 255, 0.1));
             border: 1px solid var(--difficulty-button-border-color, rgba(255, 255, 255, 0.3));
             cursor: pointer;
-            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-shrink: 0; /* Prevent shrinking */
+            flex-shrink: 0;
         }
 
         .difficulty-button:hover {
-            box-shadow: 0 0 10px var(--button-glow-color-hover, rgba(173, 216, 230, 0.5)); /* Soft glow on hover, dynamic color */
+            box-shadow: 0 0 10px var(--button-glow-color-hover, rgba(173, 216, 230, 0.5));
         }
 
         .difficulty-button.selected {
-            animation: pulse-glow 2s infinite; /* Pulsing glow for selected state */
+            animation: pulse-glow 2s infinite;
         }
         
-        /* Ensure prose list items and paragraphs inherit text color */
         .prose ul, .prose ol, .prose p {
-            color: #d1d5db; /* slate-300 */
+            color: #d1d5db;
         }
-        /* Highlight critical information with dynamic color */
-        .prose strong { /* Keeping original strong styling for basic bold */
+        .prose strong {
             color: #f0f0f0;
             font-weight: 700;
         }
-        .highlight-text { /* New class for semantic highlighting with dynamic color */
-            color: var(--highlight-color) !important; /* Force color to be visible */
-            transition: color 0.3s ease; /* Smooth transition for color change */
-            font-weight: 700 !important; /* Ensure it's bold and overrides any prose default */
+        .highlight-text {
+            color: var(--highlight-color) !important;
+            transition: color 0.3s ease;
+            font-weight: 700 !important;
         }
 
-        /* --- Collapsible section styling --- */
         .collapsible-section {
-            border-radius: 0.75rem; /* rounded-xl for consistency */
-            overflow: hidden; /* Hide overflow during collapse/expand */
-            margin-bottom: 1rem; /* space-y-4 implies this */
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-bottom: 1rem;
         }
 
         .collapsible-header {
@@ -214,11 +208,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1rem; /* Consistent padding */
-            border-bottom-width: 2px; /* border-b-2 */
-            background-color: rgba(26, 26, 26, 0.4); /* Darker background for header */
-            transition: background-color 0.3s ease, opacity 0.3s ease; /* Smooth header transitions */
-            border-color: var(--module-accent-color); /* Dynamic border color */
+            padding: 1rem;
+            border-bottom-width: 2px;
+            background-color: rgba(26, 26, 26, 0.4);
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            border-color: var(--module-accent-color);
             border-top-left-radius: 0.75rem;
             border-top-right-radius: 0.75rem;
         }
@@ -233,15 +227,14 @@
         }
 
         .collapsible-header h4 {
-            flex-grow: 1; /* Allow h4 to take available space */
-            color: #fff; /* text-white */
-            font-weight: 600; /* font-semibold */
-            font-size: 1.25rem; /* text-xl */
-            line-height: 1.75rem; /* leading-7 */
-            padding-right: 0.5rem; /* Add some space before the buttons */
+            flex-grow: 1;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            padding-right: 0.5rem;
         }
         
-        /* -- NEW: Collapsible content animation using CSS Grid -- */
         .collapsible-content {
             display: grid;
             grid-template-rows: 0fr;
@@ -262,23 +255,20 @@
             padding-bottom: 1rem;
         }
 
-        /* Adjusted styling for content boxes within the new wrapper */
         .collapsible-content .content-box {
-            background-color: rgba(0, 0, 0, 0.2); /* bg-black/20 */
-            padding: 1rem; /* p-4 */
-            border-radius: 0.5rem; /* rounded-lg */
-            border: 1px solid rgba(255, 255, 255, 0.1); /* border border-white/10 */
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
-        /* Add margin between multiple content boxes inside the wrapper */
         .inner-content-wrapper .content-box + .content-box {
             margin-top: 0.75rem;
         }
 
-        /* Adjust button group for solution header */
         .solution-header .difficulty-buttons {
             display: flex;
-            gap: 0.5rem; /* gap-2 */
-            margin-left: 1rem; /* ml-auto to push them right, plus some space */
+            gap: 0.5rem;
+            margin-left: 1rem;
         }
     </style>
 </head>
